@@ -15,8 +15,8 @@
 apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
-  name: 'app'
-description: 'Deployment pipeline for demo app'
+  name: 'gke-deploy-app'
+description: 'GKE Deployment pipeline for demo app'
 serialPipeline:
   stages:
     - targetId: 'staging'
@@ -29,13 +29,13 @@ kind: Target
 metadata:
   name: 'staging'
 description: 'Staging target'
-run:
-  location: 'projects/${PROJECT_ID}/locations/${REGION}'
+gke:
+  cluster: projects/${PROJECT_ID}/locations/${REGION}/clusters/cluster-uat
 ---
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
   name: 'prod'
 description: 'Production target'
-run:
-  location: 'projects/${PROJECT_ID}/locations/${REGION}'
+gke:
+  cluster: projects/${PROJECT_ID}/locations/${REGION}/clusters/cluster-prod
