@@ -102,7 +102,7 @@ jobs:
       - id: setup-pack
         uses: buildpacks/github-actions/setup-pack@v5.1.0
         
-      # Build and publish image to Artifact Registry
+      # Build and publish image to Google Artifact Registry
       - name: Build and Publish with Buildpacks
         run: |-
           pack config default-builder gcr.io/buildpacks/builder:google-22
