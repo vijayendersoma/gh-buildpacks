@@ -60,7 +60,7 @@ env:
   GAR_LOCATION: us-west2 # TODO: update Artifact Registry location
   REPOSITORY: buildpacks-docker-repo # TODO: update Artifact Registry repository name
   SERVICE: sample-java-springboot # TODO: update Cloud Run service name
-  REGION: us-central1 # TODO: update Cloud Run service region
+  REGION: us-west2 # TODO: update Cloud Run service region
   SOURCE_DIRECTORY: sample-java-springboot-gradle #TODO: update source code directory
   APP: app
 
