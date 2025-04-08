@@ -4,7 +4,7 @@ name: Build and Deploy to GKE
 on:
   push:
     branches:
-      - main-gke
+      - main
 
 env:
   PROJECT_ID: ${{ vars.PROJECT_ID }} # TODO: update Google Cloud project id
