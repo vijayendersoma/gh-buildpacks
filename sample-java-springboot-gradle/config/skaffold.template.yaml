@@ -15,9 +15,9 @@
 apiVersion: skaffold/v3alpha1
 kind: Config
 metadata:
-  name: 'app'
+  name: 'gke-deploy-app'
 deploy:
-  cloudrun: {}
+  kubectl: {}
 profiles:
   - name: 'staging'
     manifests:
