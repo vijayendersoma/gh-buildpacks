@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
@@ -23,6 +24,16 @@ serialPipeline:
       profiles: ['staging']
     - targetId: 'prod'
       profiles: ['prod']
+      strategy:
+        canary:
+          runtimeConfig:
+            kubernetes:
+              serviceNetworking:
+                service: "my-app-service"
+                deployment: "my-app-deployment"
+          canaryDeployment:
+            percentages: [25]
+            verify: false
 ---
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
@@ -39,3 +50,35 @@ metadata:
 description: 'Production target'
 gke:
   cluster: projects/${PROJECT_ID}/locations/${REGION}/clusters/cluster-prod
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Automation
+metadata:
+  name: my-automation-demo-app-1/promote
+description: promotes a release
+suspended: false
+serviceAccount: 370258670136-compute@developer.gserviceaccount.com
+selector:
+  targets:
+  - id: staging
+rules:
+- promoteReleaseRule:
+    name: "promote-release"
+    wait: 1m
+    toTargetId: "@next"
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Automation
+metadata:
+  name: my-automation-demo-app-1/advance
+description: advances a rollout
+suspended: false
+serviceAccount: 370258670136-compute@developer.gserviceaccount.com
+selector:
+  targets:
+  - id: prod
+rules:
+- advanceRolloutRule:
+    name: "advance-rollout"
+    sourcePhases: ["canary-25"]
+    wait: 1m
