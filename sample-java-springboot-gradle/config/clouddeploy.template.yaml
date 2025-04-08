@@ -54,7 +54,7 @@ gke:
 apiVersion: deploy.cloud.google.com/v1
 kind: Automation
 metadata:
-  name: my-automation-demo-app-1/promote
+  name: gke-deploy-app/promote
 description: promotes a release
 suspended: false
 serviceAccount: 370258670136-compute@developer.gserviceaccount.com
@@ -70,7 +70,7 @@ rules:
 apiVersion: deploy.cloud.google.com/v1
 kind: Automation
 metadata:
-  name: my-automation-demo-app-1/advance
+  name: gke-deploy-app/advance
 description: advances a rollout
 suspended: false
 serviceAccount: 370258670136-compute@developer.gserviceaccount.com
