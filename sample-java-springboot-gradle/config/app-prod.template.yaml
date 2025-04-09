@@ -6,7 +6,7 @@ metadata:
     app: my-app
   namespace: default
 spec:
-  replicas: 1 # from-param: ${replicaCount}
+  replicas: 4 # from-param: ${replicaCount}
   selector:
     matchLabels:
       app: my-app
