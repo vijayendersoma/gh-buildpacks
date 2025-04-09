@@ -79,6 +79,10 @@ selector:
   - id: prod
 rules:
 - advanceRolloutRule:
-    name: "advance-rollout"
+    name: "advance-rollout-1"
     sourcePhases: ["canary-25"]
+    wait: 1m
+- advanceRolloutRule:
+    name: "advance-rollout-2"
+    sourcePhases: ["canary-50"]
     wait: 1m
