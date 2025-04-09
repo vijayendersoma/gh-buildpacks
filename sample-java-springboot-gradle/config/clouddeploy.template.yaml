@@ -32,8 +32,8 @@ serialPipeline:
                 service: "my-app-service"
                 deployment: "my-app-deployment"
           canaryDeployment:
-            percentages: [25]
-            verify: false
+            percentages: [25, 50]
+            verify: true
 ---
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
