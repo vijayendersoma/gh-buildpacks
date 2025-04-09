@@ -18,6 +18,20 @@ metadata:
   name: 'gke-deploy-app'
 deploy:
   kubectl: {}
+verify:
+# - name: verify-integration-test
+#   container:
+#     name: integration-test
+#     image: integration-test
+#     command: ["./test-systems.sh"]
+- name: verify-endpoint-test
+  container:
+    name: alpine
+    image: alpine
+    command: ["/bin/sh"]
+    args: ["-c", "wget http://my-app-service:80"]
+  executionMode:
+    kubernetesCluster: {}
 profiles:
   - name: 'staging'
     manifests:
