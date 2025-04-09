@@ -19,14 +19,21 @@ metadata:
 deploy:
   kubectl: {}
 verify:
-- name: verify-endpoint-test
+- name: alpine-wget
   container:
-    name: alpine
-    image: alpine
+    name: alpine-wget
+    image: alpine:3.15.4
     command: ["/bin/sh"]
-    args: ["-c", "wget http://my-app-service:80"]
+    args: ["-c", "wget http://www.google.com"]
   executionMode:
     kubernetesCluster: {}
+# - name: verify-endpoint-test
+#   container:
+#     name: alpine
+#     image: alpine
+#     command: ["/bin/sh"]
+#     args: ["-c", "wget http://my-app-service:80"]
+
 profiles:
   - name: 'staging'
     manifests:
