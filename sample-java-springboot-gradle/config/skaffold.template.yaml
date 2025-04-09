@@ -19,11 +19,6 @@ metadata:
 deploy:
   kubectl: {}
 verify:
-# - name: verify-integration-test
-#   container:
-#     name: integration-test
-#     image: integration-test
-#     command: ["./test-systems.sh"]
 - name: verify-endpoint-test
   container:
     name: alpine
