@@ -18,6 +18,13 @@ metadata:
   name: 'app'
 deploy:
   cloudrun: {}
+verify:
+- name: alpine-wget
+  container:
+    name: alpine-wget
+    image: alpine:3.15.4
+    command: ["/bin/sh"]
+    args: ["-c", "wget http://www.google.com"]
 profiles:
   - name: 'staging'
     manifests:
