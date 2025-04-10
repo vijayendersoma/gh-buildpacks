@@ -20,7 +20,7 @@ spec:
   template:
     metadata:
       annotations:
-        autoscaling.knative.dev/maxScale: '1'
+        autoscaling.knative.dev/maxScale: '4'
     spec:
       containers:
       - name: 'app'
