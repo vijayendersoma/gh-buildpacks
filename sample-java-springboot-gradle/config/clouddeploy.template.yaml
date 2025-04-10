@@ -30,7 +30,7 @@ serialPipeline:
               automaticTrafficControl: true
           canaryDeployment:
             percentages: [25]
-            verify: false
+            verify: true
 ---
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
