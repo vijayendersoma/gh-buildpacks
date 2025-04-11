@@ -28,9 +28,12 @@ serialPipeline:
         canary:
           runtimeConfig:
             kubernetes:
-              serviceNetworking:
+              gatewayServiceMesh:
+                httpRoute: "my-app-service-route"
                 service: "my-app-service"
                 deployment: "my-app-deployment"
+                routeUpdateWaitTime: "60s"
+                podSelectorLabel: "app"
           canaryDeployment:
             percentages: [25, 50]
             verify: true
